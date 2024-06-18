@@ -1,3 +1,7 @@
+import url from 'node:url';
+import path from 'node:path';
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
 export const config = {
     //
     // ====================
@@ -29,7 +33,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.mts'
+        './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -62,7 +66,7 @@ export const config = {
         browserVersion: 'stable', // also possible: "insiders" or a specific version e.g. "1.80.0"
         'wdio:vscodeOptions': {
             // points to directory where extension package.json is located
-            extensionPath: __dirname,
+            extensionPath: path.join(__dirname, 'dist'),
             // optional VS Code settings
             userSettings: {
                 "editor.fontSize": 14
